@@ -25,10 +25,10 @@ fi
 rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>> $logs_file
 validate $? "Setting permissions for RabbitMQ user for Roboshop"
 
-sudo rabbitmq-plugins enable rabbitmq_management
+sudo rabbitmq-plugins enable rabbitmq_management &>> $logs_file
 validate $? "Enabling RabbitMQ Management"
 
-sudo rabbitmqctl set_user_tags roboshop administrator
+sudo rabbitmqctl set_user_tags roboshop administrator &>> $logs_file
 validate $? "Setting tags for Roboshop administrator"
 
 
