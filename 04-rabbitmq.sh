@@ -25,6 +25,12 @@ fi
 rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>> $logs_file
 validate $? "Setting permissions for RabbitMQ user for Roboshop"
 
+rabbitmq-plugins enable rabbitmq_management
+validate $? "Enabling RabbitMQ Management"
+
+rabbitmqctl set_user_tags roboshop administrator
+validate $? "Setting tags for Roboshop administrator"
+
 
 # Displaying Redis Status
 echo -e "\n${Y}--- RabbitMQ Service Status ---${N}"
