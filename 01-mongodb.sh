@@ -32,3 +32,5 @@ sleep 5
 echo -e "\n${Y}--- MongoDB Port (27017) Listening Status ---${N}"
 ss -lntp | grep 27017
 
+total_time
+
