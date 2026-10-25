@@ -74,6 +74,13 @@ python_setup(){
     /app/.venv/bin/pip install -r requirements.txt &>> $logs_file
     validate $? "Installing dependencies"
 
+
+
+}
+
+golang_setup(){
+    dnf install golang -y &>> $logs_file
+    validate $? "Installing GoLang"
 }
 
 app_setup(){
