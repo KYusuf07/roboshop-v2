@@ -16,5 +16,16 @@ systemctl enable redis &>> $logs_file
 systemctl start redis
 validate $? "Enable and start Redis"
 
-echo "$(timestamp) [INFO] Script completed in $SECONDS seconds"
-echo "$(timestamp) [INFO] ==== Script completed Execution =====" | tee -a $logs_file
+# Displaying Redis Status
+echo -e "\n${Y}--- Redis Service Status ---${N}"
+systemctl status redis --no-pager
+
+# Wait for Redis to fully initialize
+echo -e "\n${Y}--- Waiting 5 seconds for Redis to open port 27017... ---${N}"
+sleep 5
+
+# Displaying Port Listening Status
+echo -e "\n${Y}--- Redis Port (6379) Listening Status ---${N}"
+ss -lntp | grep 6379
+
+total_time
